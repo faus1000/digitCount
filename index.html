@@ -80,6 +80,37 @@
             align-items: center;
             transform: translate(1px, 0px);
         }
+        .eMediation {
+            font-size: 20;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+          /*  background-color: rgba(0 ,131, 255 , 0.22);*/
+            background-color: rgba(0 ,128, 0, 0.42); 
+            color: rgba(255, 255, 255, 0.795);
+            display: flex;
+            justify-content: center;
+            justify-items: center;
+            align-items: center;
+            transform: translate(1px, 0px);
+        }
+
+       
+        /**/
+        .oMediation {
+            font-size: 20;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            /*background-color: rgba(255, 125, 18, 0.32);*/
+            background-color:rgba(219, 41, 41, 0.42); 
+            color: rgba(255, 255, 255, 0.918);
+            display: flex;
+            justify-content: center;
+            justify-items: center;
+            align-items: center;
+            transform: translate(1px, 0px);
+        }
 
         .oDigits {
             
@@ -200,6 +231,7 @@
         var addOGroup = false;
         var addEGroup = false;
         var AusData = [0,0,0,0,0,0,0,0,0,0];
+        var Mediations = [0,0,0,0,0,0,0,0,0,0];
 
         var one = 0;
         var ResData = [0,0];
@@ -213,15 +245,12 @@
 
             var digit = Number(data.tick.quote).toFixed(decimals).slice(-1);
             var isScrolledToBottom = out.scrollWidth - out.clientWidth <= out.scrollLeft + 1;
-            // console.log(digit);
             
-            //listado de patrones por diferencia
             ResData[1] = digit;
             ResData[0]= one;
             one = digit;
             var diferencias = ResData[1]-ResData[0];
-            //DiferencePatterns.push(diferencias); 
-            //console.log(DiferencePatterns);
+            
         var percents = [0,0,0,0,0,0,0,0,0,0];
     var percentsValues = [0,0,0,0,0,0,0,0,0,0];    
 if (porcentList.length>periods) {
@@ -269,13 +298,8 @@ for (let index = 0; index < percents.length; index++) {
     
 }
 
-//console.log("25 digits:" + perioDigits);
-//console.log( "units percents" +percents);
 console.log("% percents: "+ percentsValues);
-//  for (let index = 0; index < percentsValues.length; index++) {
-//     var element = percentsValues[index];
-    
-//  }
+
 
 percents = [0,0,0,0,0,0,0,0,0,0]; 
 percentsValue = [0,0,0,0,0,0,0,0,0,0]; 
@@ -287,63 +311,72 @@ percentsValue = [0,0,0,0,0,0,0,0,0,0];
 
 }
 
-            /////////////////////////////////////////////////
             if (digit == 8) {
                 AusData[8]= co8;
                 co8 = 0;
+                Mediations[8] ="e5"
             } else {
                 co8++
             }
             if (digit == 6) {
               AusData[6]= co6;
+              Mediations[6] ="e4"
                 co6 = 0;
             } else {
                 co6++;
             }
             if (digit == 4) {
                 AusData[4]= co4;
+                Mediations[4] ="e3"
                 co4 = 0;
             } else {
                 co4++;
             }
             if (digit == 2) {
                 AusData[2]= co2;
+                Mediations[2] ="e2"
                 co2 = 0;
             } else {
                 co2++;
             }
             if (digit == 0) {
                AusData[0]= co0;
+               Mediations[0] ="e1"
                 co0 = 0;
             } else {
                 co0++;
             }
             if (digit == 1) {
                AusData[1]= co1;
+               Mediations[1] ="o1"
                 co1 = 0;
             } else {
                 co1++;
             }
             if (digit == 3) {
                AusData[3]= co3;
+               Mediations[3] ="o2"
                 co3 = 0;
             } else {
                 co3++;
             }
             if (digit == 5) {
                 AusData[5]= co5;
+                Mediations[5] ="o3"
                 co5 = 0;
             } else {
                 co5++;
             }
             if (digit == 7) {
                 AusData[7]= co7;
+                Mediations[7] ="o4"
                 co7 = 0;
             } else {
                 co7++;
             }
             if (digit == 9) {
                 AusData[9]= co9;
+                Mediations[9] ="o5"
                 co9 = 0;
 
             } else {
@@ -354,7 +387,7 @@ percentsValue = [0,0,0,0,0,0,0,0,0,0];
                 var text = "O";
                 if (oCounter > 0) {
                    // arr1.push(oCounter + text);
-                    AñadirGruposE(digit, 1,contador,AusData[digit],diferencias);
+                    AñadirGruposE(digit, 1,contador,AusData[digit],Mediations[digit]);
                     addEGroup = true
 
                 }
@@ -364,8 +397,8 @@ percentsValue = [0,0,0,0,0,0,0,0,0,0];
             } else {
                 var text = "E";
                 if (eCounter > 0) {
-                 //   arr1.push(eCounter + text);
-                    AñadirGruposO(digit, 1,contador,AusData[digit],diferencias);
+                    
+                    AñadirGruposO(digit, 1,contador,AusData[digit],Mediations[digit]);
                     addOGroup = true;
 
                 }
@@ -373,16 +406,14 @@ percentsValue = [0,0,0,0,0,0,0,0,0,0];
                 oCounter += 1;
             }
             if (eCounter > 0) {
-               // var text = "E";
-                //arr2[0] = eCounter + text;
+                
                 if (addEGroup) {
                     addEGroup = false;
                 } else {
-                    AñadirDigitsE(digit, eCounter,contador,AusData[digit],diferencias);
+                    AñadirDigitsE(digit, eCounter,contador,AusData[digit],Mediations[digit]);
 
                 }
 
-               // console.log("Ecounter mayor a cero");
             }
             if (oCounter > 0) {
                // var text = "O";
@@ -390,15 +421,14 @@ percentsValue = [0,0,0,0,0,0,0,0,0,0];
                 if (addOGroup) {
                     addOGroup = false;
                 } else {
-                    AñadirDigitsO(digit, oCounter,contador,AusData[digit],diferencias);
+                    AñadirDigitsO(digit, oCounter,contador,AusData[digit],Mediations[digit]);
 
                 }
 
-               // console.log("Ocounter mayor a cero");
             }
             // your script goes here
             // colors text 🟢🔵🔴
-            function AñadirGruposE(digito, Ec,counter,AusCounter,diference) {
+            function AñadirGruposE(digito, Ec,counter,AusCounter,Mediation) {
                 
                 var eGroup = document.createElement("div");
                 eGroup.setAttribute('class', 'egroup');
@@ -414,10 +444,16 @@ percentsValue = [0,0,0,0,0,0,0,0,0,0];
                 ePosition.setAttribute('class', 'ePosition');
                 var ePostxt = document.createTextNode(AusCounter);
                 ePosition.appendChild(ePostxt);
+
+                var eMediation = document.createElement("div");
+                eMediation.setAttribute('class', 'eMediation');
+                var eMedText = document.createTextNode(Mediation);
+                eMediation.appendChild(eMedText);
                
 
                 evenDigits.appendChild(eDigits);
                 evenDigits.appendChild(ePosition);
+                evenDigits.appendChild(eMediation);
                 eGroup.appendChild(evenDigits);
 
                 var container = document.getElementById("container");
@@ -427,14 +463,9 @@ percentsValue = [0,0,0,0,0,0,0,0,0,0];
 
             }
 
-            function AñadirDigitsE(digito, Ec,counter,AusCounter,diference) {
- 
-              //  var eCounterText = document.createTextNode(Ec); 
+            function AñadirDigitsE(digito, Ec,counter,AusCounter,Mediation) {
+
                 var edigitText = document.createTextNode(digito);
-
-               // var counterItem = document.getElementsByClassName("counterE");
-
-                //counterItem[counterItem.length - 1].innerHTML = Ec;
 
                 var digitoItem = document.getElementsByClassName("egroup");
 
@@ -451,20 +482,24 @@ percentsValue = [0,0,0,0,0,0,0,0,0,0];
                 var ePostxt = document.createTextNode(AusCounter);
                 ePosition.appendChild(ePostxt);
 
+                var eMediation = document.createElement("div");
+                eMediation.setAttribute('class', 'eMediation');
+                var eMedText = document.createTextNode(Mediation);
+                eMediation.appendChild(eMedText);
+
+                
+
 
                 evenDigits.appendChild(eDigits);
                 evenDigits.appendChild(ePosition);
+                evenDigits.appendChild(eMediation);
                 digitoItem[digitoItem.length - 1].appendChild(evenDigits);
 
             }
 
-            function AñadirGruposO(digito, Oc,counter,AusCounter,diference) {
+            function AñadirGruposO(digito, Oc,counter,AusCounter,Mediation) {
                 var oGroup = document.createElement("div");
                 oGroup.setAttribute('class', 'ogroup');
-
-              
-               // var odigitsContainer = document.createElement("div");
-               // odigitsContainer.setAttribute('class', 'oDigitsContainer');
 
                 var oddDigits = document.createElement("div");
                 oddDigits.setAttribute('class', 'oddDigits');
@@ -479,8 +514,14 @@ percentsValue = [0,0,0,0,0,0,0,0,0,0];
                 var oPostxt = document.createTextNode(AusCounter);
                 oPosition.appendChild(oPostxt);
 
+                var oMediation = document.createElement("div");
+                oMediation.setAttribute('class', 'oMediation');
+                var oMedText = document.createTextNode(Mediation);
+                oMediation.appendChild(oMedText);
+
                oddDigits.appendChild(oDigits);
                oddDigits.appendChild(oPosition);
+               oddDigits.appendChild(oMediation);
                 
                 oGroup.appendChild(oddDigits);
                 var container = document.getElementById("container");
@@ -488,11 +529,8 @@ percentsValue = [0,0,0,0,0,0,0,0,0,0];
 
             }
 
-            function AñadirDigitsO(digito, Oc,counter,AusCounter,diference) {
-                
-               // var counterItem = document.getElementsByClassName("counterO");
+            function AñadirDigitsO(digito, Oc,counter,AusCounter,Mediation) {
 
-                //counterItem[counterItem.length - 1].innerHTML = Oc;
 
                 var digitoItemO = document.getElementsByClassName("ogroup");
 
@@ -509,9 +547,15 @@ percentsValue = [0,0,0,0,0,0,0,0,0,0];
                 var oPostxt = document.createTextNode(AusCounter);
                 oPosition.appendChild(oPostxt);
 
+                var oMediation = document.createElement("div");
+                oMediation.setAttribute('class', 'oMediation');
+                var oMedText = document.createTextNode(Mediation);
+                oMediation.appendChild(oMedText);
+
 
                 oddDigits.appendChild(oDigits);
                 oddDigits.appendChild(oPosition);
+                oddDigits.appendChild(oMediation);
                 
                 digitoItemO[digitoItemO.length - 1].appendChild(oddDigits);
             }
