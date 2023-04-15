@@ -38,7 +38,7 @@
 
         .eDigits {
            
-            background-color: rgba(0 ,128, 0, 0.42); 
+            background-color: rgba(0 ,128, 0, 0.35); 
             color: #ffffff;
             font-size: 24;
             width: 32px;
@@ -85,8 +85,6 @@
             width: 32px;
             height: 32px;
             border-radius: 50%;
-          /*  background-color: rgba(0 ,131, 255 , 0.22);*/
-            background-color: rgba(0 ,128, 0, 0.42); 
             color: rgba(255, 255, 255, 0.795);
             display: flex;
             justify-content: center;
@@ -102,8 +100,6 @@
             width: 32px;
             height: 32px;
             border-radius: 50%;
-            /*background-color: rgba(255, 125, 18, 0.32);*/
-            background-color:rgba(219, 41, 41, 0.42); 
             color: rgba(255, 255, 255, 0.918);
             display: flex;
             justify-content: center;
@@ -114,7 +110,7 @@
 
         .oDigits {
             
-            background-color:rgba(219, 41, 41, 0.42); 
+            background-color:rgba(219, 41, 41, 0.31); 
             color: #ffffff;
             font-size: 24;
             width: 32px;
@@ -441,12 +437,31 @@ percentsValue = [0,0,0,0,0,0,0,0,0,0];
                 eDigits.appendChild(edigitText);
 
                 var ePosition = document.createElement("div");
-                ePosition.setAttribute('class', 'ePosition');
+                if (AusCounter >= 10){
+                    ePosition.setAttribute('class', 'oPosition');
+                }else{
+                    ePosition.setAttribute('class', 'ePosition');
+                }
+
+                
+                
                 var ePostxt = document.createTextNode(AusCounter);
                 ePosition.appendChild(ePostxt);
+                
 
                 var eMediation = document.createElement("div");
                 eMediation.setAttribute('class', 'eMediation');
+                if (digito ==0){
+                    eMediation.style.backgroundColor = "#3ea507";
+                }else if(digito ==2){
+                    eMediation.style.backgroundColor = "#2d9205";
+                }else if(digito ==4){
+                    eMediation.style.backgroundColor = "#177203";
+                }else if(digito ==6){
+                    eMediation.style.backgroundColor = "#095a02";
+                }else if(digito ==8){
+                    eMediation.style.backgroundColor = "#064102";
+                }
                 var eMedText = document.createTextNode(Mediation);
                 eMediation.appendChild(eMedText);
                
@@ -478,12 +493,28 @@ percentsValue = [0,0,0,0,0,0,0,0,0,0];
                 eDigits.appendChild(edigitText);
 
                 var ePosition = document.createElement("div");
-                ePosition.setAttribute('class', 'ePosition');
+                if (AusCounter >= 10){
+                    ePosition.setAttribute('class', 'oPosition');
+                }else{
+                    ePosition.setAttribute('class', 'ePosition');
+                }
+                
                 var ePostxt = document.createTextNode(AusCounter);
                 ePosition.appendChild(ePostxt);
 
                 var eMediation = document.createElement("div");
                 eMediation.setAttribute('class', 'eMediation');
+                if (digito ==0){
+                    eMediation.style.backgroundColor = "#3ea507";
+                }else if(digito ==2){
+                    eMediation.style.backgroundColor = "#2d9205";
+                }else if(digito ==4){
+                    eMediation.style.backgroundColor = "#177203";
+                }else if(digito ==6){
+                    eMediation.style.backgroundColor = "#095a02";
+                }else if(digito ==8){
+                    eMediation.style.backgroundColor = "#064102";
+                }
                 var eMedText = document.createTextNode(Mediation);
                 eMediation.appendChild(eMedText);
 
@@ -510,12 +541,27 @@ percentsValue = [0,0,0,0,0,0,0,0,0,0];
                 oDigits.appendChild(odigitText);
 
                 var oPosition = document.createElement("div");
-                oPosition.setAttribute('class', 'oPosition');
+                if (AusCounter >= 10){
+                    oPosition.setAttribute('class', 'oPosition');
+                }else{
+                    oPosition.setAttribute('class', 'ePosition');
+                } 
                 var oPostxt = document.createTextNode(AusCounter);
                 oPosition.appendChild(oPostxt);
 
                 var oMediation = document.createElement("div");
                 oMediation.setAttribute('class', 'oMediation');
+                if (digito ==1){
+                    oMediation.style.backgroundColor = "#eb5f66";
+                }else if(digito ==3){
+                    oMediation.style.backgroundColor = "#ce4745";
+                }else if(digito ==5){
+                    oMediation.style.backgroundColor = "#be3624";
+                }else if(digito ==7){
+                    oMediation.style.backgroundColor = "#aa140f";
+                }else if(digito ==9){
+                    oMediation.style.backgroundColor = "#800c08";
+                }
                 var oMedText = document.createTextNode(Mediation);
                 oMediation.appendChild(oMedText);
 
@@ -543,12 +589,27 @@ percentsValue = [0,0,0,0,0,0,0,0,0,0];
                 oDigits.appendChild(odigitText);
 
                 var oPosition = document.createElement("div");
-                oPosition.setAttribute('class', 'oPosition');
+                if (AusCounter >= 10){
+                    oPosition.setAttribute('class', 'oPosition');
+                }else{
+                    oPosition.setAttribute('class', 'ePosition');
+                }  
                 var oPostxt = document.createTextNode(AusCounter);
                 oPosition.appendChild(oPostxt);
 
                 var oMediation = document.createElement("div");
                 oMediation.setAttribute('class', 'oMediation');
+                if (digito ==1){
+                    oMediation.style.backgroundColor = "#eb5f66";
+                }else if(digito ==3){
+                    oMediation.style.backgroundColor = "#ce4745";
+                }else if(digito ==5){
+                    oMediation.style.backgroundColor = "#be3624";
+                }else if(digito ==7){
+                    oMediation.style.backgroundColor = "#aa140f";
+                }else if(digito ==9){
+                    oMediation.style.backgroundColor = "#800c08";
+                }
                 var oMedText = document.createTextNode(Mediation);
                 oMediation.appendChild(oMedText);
 
