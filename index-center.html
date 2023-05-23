@@ -3,7 +3,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="./favicon.png">
-    <title>Digits Counting</title>
+    <title>Digits Counting-center</title>
     <style>
         /* width */
         ::-webkit-scrollbar {
@@ -52,7 +52,9 @@
             display: flex;
         }
 
-
+#metaContainer{
+    display: flex;
+}
 
 
         #container {
@@ -139,10 +141,26 @@
 </head>
 
 <body>
-    
-    <div id="container">
-        
+    <!-- <div id="container">
+        <div class="egroup">
+            <span class="counterE">3</span>
+            <div class="line"></div>
+            <div class="eDigits">468</div> 
+        </div>
+        <div class="ogroup">
+            <div class="spacer"></div>
+            <div class="oDigits">931</div>
+            <div class="lineO"></div>
+            <span class="counterO">3</span>
+        </div>
+
+
+    </div> -->
+    <div id="metaContainer">
+         <div id="container"> 
     </div>
+    </div>
+   
 
 
 
@@ -201,17 +219,72 @@
             var data = JSON.parse(msg.data);
 
             var digit = Number(data.tick.quote).toFixed(decimals).slice(-1);
-           
-            var isScrolledToBottom = out.scrollHeight - out.clientHeight <= out.scrollTop + 1;
+            var isScrolledToBottom = out.scrollWidth - out.clientWidth <= out.scrollLeft + 1;
 
             ResData[1] = digit;
             ResData[0] = one;
             one = digit;
             var diferencias = ResData[1] - ResData[0];
- 
- 
 
-            
+            var percents = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+            var percentsValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+            if (porcentList.length > periods) {
+                porcentList.push(digit);
+                var perioDigits = porcentList.slice(porcentList.length - periods, porcentList.length);
+
+                //calcular los porcentajes
+                perioDigits.forEach(element => {
+                    if (element == "0") {
+                        percents[0] += 1;
+                    } else if (element == "1") {
+                        percents[1] += 1;
+                    }
+                    else if (element == "2") {
+                        percents[2] += 1;
+                    }
+                    else if (element == "3") {
+                        percents[3] += 1;
+                    }
+                    else if (element == "4") {
+                        percents[4] += 1;
+                    }
+                    else if (element == "5") {
+                        percents[5] += 1;
+                    }
+                    else if (element == "6") {
+                        percents[6] += 1;
+                    }
+                    else if (element == "7") {
+                        percents[7] += 1;
+                    } else if (element == "8") {
+                        percents[8] += 1;
+                    } else if (element == "9") {
+                        percents[9] += 1;
+                    }
+                });
+
+
+                for (let index = 0; index < percents.length; index++) {
+                    var element = (percents[index] * 100) / periods;
+                    //percentsValues[index] = index+"-"+element+"%";
+                    percentsValues[index] = element + "%";
+
+                    //mostrar los 5 digitos con mayor porcentaje
+
+                }
+
+                console.log("% percents: " + percentsValues);
+
+
+                percents = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                percentsValue = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+            } else {
+                //seguir añadiendo
+                console.log("cargando digitos");
+                porcentList.push(digit);
+
+            }
 
             if (digit == 8) {
                 AusData[8] = co8;
